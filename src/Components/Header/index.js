@@ -1,12 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-// import { Container } from './styles';
+import { actions } from "../../store/actions/list";
 
 export default function Header() {
+  const dispatch = useDispatch();
+
   return (
     <>
-      <input type="text" />
-      <button>Search</button>
+      <input
+        placeholder="search"
+        onChange={e => dispatch(actions.toggleSearch(e.target.value))}
+      />
     </>
   );
 }

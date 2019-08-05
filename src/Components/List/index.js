@@ -1,16 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
-// import { Container } from './styles';
+import { selectors } from "../../store/selectors/list";
 
 export default function List() {
+  const allList = useSelector(selectors.getList);
+  console.log("allList", allList);
+
   return (
     <>
       <ul>
-        <li>item 1</li>
-        <li>item 2</li>
-        <li>item 3</li>
-        <li>item 4</li>
-        <li>item 5</li>
+        {allList.map(item => (
+          <li key={item}>{item}</li>
+        ))}
       </ul>
     </>
   );
